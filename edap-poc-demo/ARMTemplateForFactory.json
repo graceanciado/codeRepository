@@ -46,7 +46,10 @@
 							"notebookPath": "/Users/t828427@spark.co.nz/sas_to_parquet_using_spark",
 							"libraries": [
 								{
-									"jar": "dbfs:/nicoleblbstg/sample_dataset_contents.sas7bdat"
+									"cran": {
+										"package": "sas7bdat_0.5.tar.gz",
+										"repo": "https://htmloutput.blob.core.windows.net/sas-to-parquet-output/sas7bdat_0.5.tar.gz"
+									}
 								}
 							]
 						},
