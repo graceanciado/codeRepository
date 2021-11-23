@@ -1,0 +1,9 @@
+{
+	"name": "edap-poc-demo",
+	"location": "australiasoutheast",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "09fe95a2-af96-4472-987c-494dff7b7046",
+		"tenantId": "f6b3cec6-a862-4a40-9ab4-00d6e11e6f0f"
+	}
+}
