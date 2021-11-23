@@ -1,5 +1,5 @@
 {
-	"name": "sasbinaryfile",
+	"name": "sasbinary",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage2",
