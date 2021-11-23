@@ -1,5 +1,5 @@
 {
-	"name": "custom",
+	"name": "sasbinary_blob_to_blob",
 	"properties": {
 		"activities": [
 			{
@@ -26,12 +26,9 @@
 						}
 					},
 					"sink": {
-						"type": "ParquetSink",
+						"type": "BinarySink",
 						"storeSettings": {
 							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "ParquetWriteSettings"
 						}
 					},
 					"enableStaging": false
@@ -44,7 +41,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "parquet",
+						"referenceName": "target_sasbinary",
 						"type": "DatasetReference"
 					}
 				]
