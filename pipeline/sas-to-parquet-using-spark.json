@@ -18,9 +18,8 @@
 					"notebookPath": "/Users/t828427@spark.co.nz/sas_to_parquet_using_spark",
 					"libraries": [
 						{
-							"cran": {
-								"package": "sas7bdat-2.2.3.tar.gz",
-								"repo": "https://htmloutput.blob.core.windows.net/sas-to-parquet-output/sas7bdat-2.2.3.tar.gz"
+							"pypi": {
+								"package": ""
 							}
 						}
 					]
