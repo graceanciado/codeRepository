@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "sas-to-parquet-using-spark",
 	"properties": {
 		"activities": [
 			{
