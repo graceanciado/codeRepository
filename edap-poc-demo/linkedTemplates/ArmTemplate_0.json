@@ -83,10 +83,10 @@
 						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
-							"retry": 0,
+							"retry": 10,
 							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
+							"secureOutput": true,
+							"secureInput": true
 						},
 						"userProperties": [],
 						"typeProperties": {
@@ -94,8 +94,8 @@
 							"libraries": [
 								{
 									"cran": {
-										"package": "sas7bdat_0.5.tar.gz",
-										"repo": "https://htmloutput.blob.core.windows.net/sas-to-parquet-output/sas7bdat_0.5.tar.gz"
+										"package": "sas7bdat",
+										"repo": "https://CRAN.R-project.org/package=sas7bdat"
 									}
 								}
 							]
