@@ -1,8 +1,8 @@
 {
-	"name": "source_sasbinary",
+	"name": "target_sasbinary",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureBlobStorage2",
+			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -14,7 +14,7 @@
 					"value": "sample_file_1.sas7bdat",
 					"type": "Expression"
 				},
-				"container": "nicoleblbstg"
+				"container": "sas-to-parquet-output"
 			}
 		}
 	}

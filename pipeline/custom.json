@@ -38,7 +38,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "sasbinary",
+						"referenceName": "source_sasbinary",
 						"type": "DatasetReference"
 					}
 				],
