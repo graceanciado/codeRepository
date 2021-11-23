@@ -36,7 +36,8 @@
 		],
 		"parameters": {
 			"name": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "/path/filename"
 			}
 		},
 		"annotations": []
