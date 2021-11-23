@@ -18,7 +18,7 @@
 					"notebookPath": "/Users/t828427@spark.co.nz/sas_to_parquet_using_spark",
 					"libraries": [
 						{
-							"jar": ""
+							"jar": "dbfs:/mnt/nicoleblbstg/sample_dataset_contents.sas7bdat"
 						}
 					]
 				},
