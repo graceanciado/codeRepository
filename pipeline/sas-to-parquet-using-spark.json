@@ -16,6 +16,12 @@
 				"userProperties": [],
 				"typeProperties": {
 					"notebookPath": "/Users/t828427@spark.co.nz/sas_to_parquet_using_spark",
+					"baseParameters": {
+						"input": {
+							"value": "@pipeline().parameters.name",
+							"type": "Expression"
+						}
+					},
 					"libraries": [
 						{
 							"jar": "dbfs:/mnt/nicoleblbstg/sample_dataset_contents.sas7bdat"
@@ -28,6 +34,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"name": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
