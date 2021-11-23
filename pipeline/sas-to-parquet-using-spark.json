@@ -24,7 +24,7 @@
 					},
 					"libraries": [
 						{
-							"jar": "dbfs:/mnt/nicoleblbstg/sample_dataset_contents.sas7bdat"
+							"jar": "dbfs:/nicoleblbstg/sample_dataset_contents.sas7bdat"
 						}
 					]
 				},
