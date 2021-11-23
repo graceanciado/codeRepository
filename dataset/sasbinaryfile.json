@@ -1,0 +1,21 @@
+{
+	"name": "sasbinaryfile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "sample_file_1.sas7bdat",
+					"type": "Expression"
+				},
+				"container": "nicoleblbstg"
+			}
+		}
+	}
+}

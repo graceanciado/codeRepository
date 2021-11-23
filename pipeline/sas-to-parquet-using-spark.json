@@ -16,12 +16,6 @@
 				"userProperties": [],
 				"typeProperties": {
 					"notebookPath": "/Users/t828427@spark.co.nz/sas_to_parquet_using_spark",
-					"baseParameters": {
-						"input": {
-							"value": "@pipeline().parameters.name",
-							"type": "Expression"
-						}
-					},
 					"libraries": [
 						{
 							"jar": ""
@@ -34,12 +28,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"name": {
-				"type": "string",
-				"defaultValue": "/path/filename"
-			}
-		},
 		"annotations": []
 	}
 }
