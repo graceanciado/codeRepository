@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "1",
 				"spark.dynamicAllocation.maxExecutors": "4",
-				"spark.autotune.trackingId": "fef88d4a-86d4-4109-b4db-d6e526f44c24"
+				"spark.autotune.trackingId": "48ab5149-e634-4bb8-8a65-668758c2d438"
 			}
 		},
 		"metadata": {
@@ -51,19 +51,22 @@
 			{
 				"cell_type": "code",
 				"source": [
-					"# ***********************************Set Up ***********************************\r\n",
 					"# Import PySpark\r\n",
 					"import pyspark\r\n",
 					"from pyspark.sql import SparkSession\r\n",
 					"from pyspark.sql.types import StructType, StructField, StringType, IntegerType\r\n",
-					"import sas7bdat\r\n",
+					"\r\n",
 					"    \r\n",
 					"if type(sqlContext) != pyspark.sql.context.HiveContext:\r\n",
 					"    print('reset the Spark SQL context')\r\n",
-					"df = spark.read.format(\"com.github.saurfang.sas.spark\").load(\"/mnt/nicoleblbstg/sample_dataset_contents.sas7bdat\", \r\n",
+					"    \r\n",
+					"# *****************************************************************************\r\n",
+					"\r\n",
+					"#read and write required Metadata columns\r\n",
+					"    df = spark.read.format(\"com.github.saurfang.sas.spark\").load(\"abfss://sasdata@pochtmldemotoadls.dfs.core.windows.net/sample_file_1.sas7bdat\", \r\n",
 					"                                                                 forceLowercaseNames=True, inferLong=True)"
 				],
-				"execution_count": 6
+				"execution_count": 4
 			}
 		]
 	}

@@ -18,7 +18,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "1",
 				"spark.dynamicAllocation.maxExecutors": "4",
-				"spark.autotune.trackingId": "744dde2e-c1e8-4ae3-98c5-5c2ea6b11d64"
+				"spark.autotune.trackingId": "c840d3db-a3af-4120-8bd0-930a78c9feac"
 			}
 		},
 		"metadata": {
@@ -73,8 +73,8 @@
 					"\n",
 					"# ***********************************Set Up ***********************************\n",
 					"#Install packages, if not installed for first run remove the comments on sas7bdat and/or pandas\n",
-					"%pip install sas7bdat\n",
-					"%pip install --upgrade pip\n",
+					"#%pip install sas7bdat\n",
+					"#%pip install --upgrade pip\n",
 					"\n",
 					"#import required packages\n",
 					"#import os\n",
