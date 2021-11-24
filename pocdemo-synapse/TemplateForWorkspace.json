@@ -186,7 +186,7 @@
 						"spark.dynamicAllocation.enabled": "true",
 						"spark.dynamicAllocation.minExecutors": "1",
 						"spark.dynamicAllocation.maxExecutors": "4",
-						"spark.autotune.trackingId": "fec894f6-af12-44a1-81ca-3d27af6cfdb0"
+						"spark.autotune.trackingId": "17a882cb-2e58-4889-a0fc-a8a8f020bbaf"
 					}
 				},
 				"metadata": {
@@ -227,7 +227,6 @@
 							}
 						},
 						"source": [
-							"\n",
 							"# *****************************************************************************\n",
 							"# Added to mount to the Azure Storage Account\n",
 							"\n",
@@ -242,8 +241,8 @@
 							"\n",
 							"# ***********************************Set Up ***********************************\n",
 							"#Install packages, if not installed for first run remove the comments on sas7bdat and/or pandas\n",
-							"#%pip install sas7bdat\n",
-							"#%pip install --upgrade pip\n",
+							"%pip install sas7bdat\n",
+							"%pip install --upgrade pip\n",
 							"\n",
 							"#import required packages\n",
 							"#import os\n",
