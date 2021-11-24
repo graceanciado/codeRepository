@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "1",
 				"spark.dynamicAllocation.maxExecutors": "4",
-				"spark.autotune.trackingId": "2461abc6-7115-4d1c-abbd-e920e14c7ba9"
+				"spark.autotune.trackingId": "d05406e7-44fd-4a09-9180-716e569ad3fe"
 			}
 		},
 		"metadata": {
@@ -63,10 +63,10 @@
 					"# *****************************************************************************\r\n",
 					"\r\n",
 					"#read and write required Metadata columns\r\n",
-					"df = spark.read.format(\"com.github.saurfang.sas.spark\").load(\"/mnt/pocdemogen2/sas-to-parquet/sample_file_1.sas7bdat\", \r\n",
+					"df = spark.read.format(\"com.github.saurfang.sas.spark\").load(\"/sample_file_1.sas7bdat\", \r\n",
 					"                                                                 forceLowercaseNames=True, inferLong=True)"
 				],
-				"execution_count": null
+				"execution_count": 13
 			}
 		]
 	}
