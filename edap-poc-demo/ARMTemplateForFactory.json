@@ -46,8 +46,8 @@
 							"notebookPath": "/Users/t829134@spark.co.nz/sas_to_parquet_using_spark",
 							"libraries": [
 								{
-									"cran": {
-										"package": "sas7bdat"
+									"maven": {
+										"coordinates": "saurfang:spark-sas7bdat:3.0.0-s_2.12"
 									}
 								}
 							]
