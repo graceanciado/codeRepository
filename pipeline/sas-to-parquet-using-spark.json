@@ -19,7 +19,7 @@
 					"libraries": [
 						{
 							"pypi": {
-								"package": "bdat-2.2.3.tar.gz",
+								"package": "sas7bdat-2.2.3.tar.gz",
 								"repo": "https://htmloutput.blob.core.windows.net/sas-to-parquet-output/"
 							}
 						}
