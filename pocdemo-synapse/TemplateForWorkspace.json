@@ -263,7 +263,7 @@
 						"spark.dynamicAllocation.enabled": "true",
 						"spark.dynamicAllocation.minExecutors": "1",
 						"spark.dynamicAllocation.maxExecutors": "4",
-						"spark.autotune.trackingId": "744dde2e-c1e8-4ae3-98c5-5c2ea6b11d64"
+						"spark.autotune.trackingId": "d2e11456-5d2c-4ef6-9c58-78f683e97589"
 					}
 				},
 				"metadata": {
@@ -288,8 +288,10 @@
 						"sparkVersion": "3.1",
 						"nodeCount": 10,
 						"cores": 4,
-						"memory": 28
-					}
+						"memory": 28,
+						"automaticScaleJobs": true
+					},
+					"sessionKeepAliveTimeout": 30
 				},
 				"cells": [
 					{
@@ -316,7 +318,7 @@
 							"\n",
 							"# ***********************************Set Up ***********************************\n",
 							"#Install packages, if not installed for first run remove the comments on sas7bdat and/or pandas\n",
-							"%pip install sas7bdat\n",
+							"#%pip install sas7bdat\n",
 							"%pip install --upgrade pip\n",
 							"\n",
 							"#import required packages\n",
@@ -400,7 +402,7 @@
 				"nbformat": 4,
 				"nbformat_minor": 2,
 				"bigDataPool": {
-					"referenceName": "sparkpool",
+					"referenceName": "pocdemo",
 					"type": "BigDataPoolReference"
 				},
 				"sessionProperties": {
@@ -413,7 +415,7 @@
 						"spark.dynamicAllocation.enabled": "true",
 						"spark.dynamicAllocation.minExecutors": "1",
 						"spark.dynamicAllocation.maxExecutors": "4",
-						"spark.autotune.trackingId": "9af92b1f-512c-4284-a0c3-7bd1f468b45a"
+						"spark.autotune.trackingId": "40ec1489-4473-4d6f-b2cf-64b876ee4519"
 					}
 				},
 				"metadata": {
@@ -427,10 +429,10 @@
 						"name": "python"
 					},
 					"a365ComputeOptions": {
-						"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/otpocdemo/providers/Microsoft.Synapse/workspaces/pocdemo-synapse/bigDataPools/sparkpool",
-						"name": "sparkpool",
+						"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/otpocdemo/providers/Microsoft.Synapse/workspaces/pocdemo-synapse/bigDataPools/pocdemo",
+						"name": "pocdemo",
 						"type": "Spark",
-						"endpoint": "https://pocdemo-synapse.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool",
+						"endpoint": "https://pocdemo-synapse.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/pocdemo",
 						"auth": {
 							"type": "AAD",
 							"authResource": "https://dev.azuresynapse.net"
@@ -438,12 +440,15 @@
 						"sparkVersion": "3.1",
 						"nodeCount": 10,
 						"cores": 4,
-						"memory": 28
-					}
+						"memory": 28,
+						"automaticScaleJobs": true
+					},
+					"sessionKeepAliveTimeout": 30
 				},
 				"cells": [
 					{
 						"cell_type": "code",
+						"metadata": {},
 						"source": [
 							"# ***********************************Set Up ***********************************\r\n",
 							"# Import PySpark\r\n",
