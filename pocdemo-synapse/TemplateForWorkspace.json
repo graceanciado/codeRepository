@@ -165,11 +165,10 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('workspaceName'), '/sas_to_parquet_using_spark_databricks')]",
+			"name": "[concat(parameters('workspaceName'), '/sas_to_parquet_using_python')]",
 			"type": "Microsoft.Synapse/workspaces/notebooks",
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
-				"description": "thsi is import from databricks",
 				"nbformat": 4,
 				"nbformat_minor": 2,
 				"bigDataPool": {
@@ -186,7 +185,7 @@
 						"spark.dynamicAllocation.enabled": "true",
 						"spark.dynamicAllocation.minExecutors": "1",
 						"spark.dynamicAllocation.maxExecutors": "4",
-						"spark.autotune.trackingId": "17a882cb-2e58-4889-a0fc-a8a8f020bbaf"
+						"spark.autotune.trackingId": "83bfc065-c973-44b0-841a-ae93e4ac19ac"
 					}
 				},
 				"metadata": {
@@ -215,6 +214,156 @@
 						"automaticScaleJobs": true
 					},
 					"sessionKeepAliveTimeout": 30
+				},
+				"cells": [
+					{
+						"cell_type": "code",
+						"metadata": {
+							"application/vnd.databricks.v1+cell": {
+								"title": "",
+								"showTitle": false,
+								"nuid": "52fda352-2b36-4272-a3a9-a08b3acd6625"
+							}
+						},
+						"source": [
+							"#Install Packages\n",
+							"%pip install sas7bdat\n",
+							"%pip install --upgrade pip\n",
+							"\n",
+							"#Import Packages\n",
+							"import pandas as pd\n",
+							"import pyarrow as pa\n",
+							"import pyarrow.parquet as pq\n",
+							"from sas7bdat import SAS7BDAT\n",
+							"\n",
+							"# *****************************************************************************\n",
+							"# Added to mount to the Azure Storage Account\n",
+							"\n",
+							"mount_name = '/mnt/nicoleblbstg'\n",
+							"\n",
+							"if not any(mount.mountPoint == mount_name for mount in dbutils.fs.mounts()):              \n",
+							"    dbutils.fs.mount(\n",
+							"        source = \"wasbs://nicoleblbstg@nicoleblbstg.blob.core.windows.net\",\n",
+							"        mount_point = mount_name,\n",
+							"        extra_configs = {\"fs.azure.account.key.nicoleblbstg.blob.core.windows.net\":\"IekjFA+sqW3MwykZV7B4S5/7dzbB600psa9QyWnfYZDMBCylvKQvXcdnR17S1Vo3wvpuUMsDOv1Dh009DMEjQw==\"}) \n",
+							"# *****************************************************************************\n",
+							"\n",
+							"\n",
+							"#read and write required Metadata columns\n",
+							"with SAS7BDAT('/dbfs/mnt/nicoleblbstg/sample_dataset_contents.sas7bdat', skip_header=False) as metadata:\n",
+							"  #Put Data into Pandas Dataframe\n",
+							"  df_metadata = metadata.to_data_frame()\n",
+							"  df_metadata.to_parquet('/dbfs/mnt/nicoleblbstg/sas-to-parquet-using-python/sample_dataset_contents.parquet',compression='SNAPPY')  \n",
+							"\n",
+							"def sas_to_parquet(filelist, source, destination):\n",
+							"    rows = 0\n",
+							"    for i, filename in enumerate(filelist):\n",
+							"      #read data into Pandas Dataframe\n",
+							"      with SAS7BDAT(source+filename+'.sas7bdat', skip_header=False) as reader:\n",
+							"            #Put Data into Pandas Dataframe\n",
+							"            df = reader.to_data_frame()\n",
+							"            #Write to Parquet\n",
+							"            df.to_parquet(destination+filename+'.parquet',compression='SNAPPY')  \n",
+							"########################## Not necessary purely for viewing purposes ##########################\n",
+							"            #Read Parquet to validate\n",
+							"            df_parquet = pd.read_parquet(destination+filename+'.parquet')\n",
+							"            #List attributes\n",
+							"            df_parquet.info(verbose=True)\n",
+							"            print(df_parquet)\n",
+							"########################## End ##########################\n",
+							"                      \n",
+							"# SaS files to process into Parquet Files (Contains list of files, sourcedirectory, destinationdirectory)   \n",
+							"sas_to_parquet(['sample_file_1','sample_file_2','sample_file_3','sample_file_4','sample_file_3_formats_data'], \n",
+							"               '/dbfs/mnt/nicoleblbstg/','/dbfs/mnt/nicoleblbstg/sas-to-parquet-using-python/')\n",
+							"\n",
+							"        "
+						],
+						"outputs": [],
+						"execution_count": 0
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"application/vnd.databricks.v1+cell": {
+								"title": "",
+								"showTitle": false,
+								"nuid": "079bc4d6-41ba-4811-a80a-4d9ee011ce43"
+							}
+						},
+						"source": [
+							""
+						],
+						"outputs": [],
+						"execution_count": 0
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"application/vnd.databricks.v1+cell": {
+								"title": "",
+								"showTitle": false,
+								"nuid": "9ac6d9e6-933e-433c-98bb-f8fa82abf6be"
+							}
+						},
+						"source": [
+							""
+						],
+						"outputs": [],
+						"execution_count": 0
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/sas_to_parquet_using_spark_databricks')]",
+			"type": "Microsoft.Synapse/workspaces/notebooks",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"description": "thsi is import from databricks",
+				"nbformat": 4,
+				"nbformat_minor": 2,
+				"bigDataPool": {
+					"referenceName": "sparkpool",
+					"type": "BigDataPoolReference"
+				},
+				"sessionProperties": {
+					"driverMemory": "28g",
+					"driverCores": 4,
+					"executorMemory": "28g",
+					"executorCores": 4,
+					"numExecutors": 1,
+					"conf": {
+						"spark.dynamicAllocation.enabled": "true",
+						"spark.dynamicAllocation.minExecutors": "1",
+						"spark.dynamicAllocation.maxExecutors": "4",
+						"spark.autotune.trackingId": "444d016f-8f68-445b-9bcc-b1cde9d7ec5b"
+					}
+				},
+				"metadata": {
+					"saveOutput": true,
+					"enableDebugMode": false,
+					"kernelspec": {
+						"name": "synapse_pyspark",
+						"display_name": "Synapse PySpark"
+					},
+					"language_info": {
+						"name": "python"
+					},
+					"a365ComputeOptions": {
+						"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/otpocdemo/providers/Microsoft.Synapse/workspaces/pocdemo-synapse/bigDataPools/sparkpool",
+						"name": "sparkpool",
+						"type": "Spark",
+						"endpoint": "https://pocdemo-synapse.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool",
+						"auth": {
+							"type": "AAD",
+							"authResource": "https://dev.azuresynapse.net"
+						},
+						"sparkVersion": "3.1",
+						"nodeCount": 10,
+						"cores": 4,
+						"memory": 28
+					}
 				},
 				"cells": [
 					{
@@ -296,7 +445,7 @@
 							"        "
 						],
 						"outputs": [],
-						"execution_count": 0
+						"execution_count": 1
 					},
 					{
 						"cell_type": "code",
@@ -311,7 +460,7 @@
 							""
 						],
 						"outputs": [],
-						"execution_count": 0
+						"execution_count": null
 					}
 				]
 			},
