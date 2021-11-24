@@ -93,78 +93,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('workspaceName'), '/sas-to-parquet-using-spark')]",
-			"type": "Microsoft.Synapse/workspaces/notebooks",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"nbformat": 4,
-				"nbformat_minor": 2,
-				"bigDataPool": {
-					"referenceName": "sparkpool",
-					"type": "BigDataPoolReference"
-				},
-				"sessionProperties": {
-					"driverMemory": "28g",
-					"driverCores": 4,
-					"executorMemory": "28g",
-					"executorCores": 4,
-					"numExecutors": 1,
-					"conf": {
-						"spark.dynamicAllocation.enabled": "true",
-						"spark.dynamicAllocation.minExecutors": "1",
-						"spark.dynamicAllocation.maxExecutors": "4",
-						"spark.autotune.trackingId": "5f9acf8a-f569-4043-b844-ae44812f37f9"
-					}
-				},
-				"metadata": {
-					"saveOutput": true,
-					"enableDebugMode": false,
-					"kernelspec": {
-						"name": "synapse_pyspark",
-						"display_name": "Synapse PySpark"
-					},
-					"language_info": {
-						"name": "python"
-					},
-					"a365ComputeOptions": {
-						"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/otpocdemo/providers/Microsoft.Synapse/workspaces/pocdemo-synapse/bigDataPools/sparkpool",
-						"name": "sparkpool",
-						"type": "Spark",
-						"endpoint": "https://pocdemo-synapse.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool",
-						"auth": {
-							"type": "AAD",
-							"authResource": "https://dev.azuresynapse.net"
-						},
-						"sparkVersion": "3.1",
-						"nodeCount": 10,
-						"cores": 4,
-						"memory": 28
-					}
-				},
-				"cells": [
-					{
-						"cell_type": "code",
-						"source": [
-							"# ***********************************Set Up ***********************************\r\n",
-							"# Import PySpark\r\n",
-							"import pyspark\r\n",
-							"from pyspark.sql import SparkSession\r\n",
-							"from pyspark.sql.types import StructType, StructField, StringType, IntegerType\r\n",
-							"import sas7bdat\r\n",
-							"    \r\n",
-							"if type(sqlContext) != pyspark.sql.context.HiveContext:\r\n",
-							"    print('reset the Spark SQL context')\r\n",
-							"df = spark.read.format(\"com.github.saurfang.sas.spark\").load(\"/mnt/nicoleblbstg/sample_dataset_contents.sas7bdat\", \r\n",
-							"                                                                 forceLowercaseNames=True, inferLong=True)"
-						],
-						"outputs": [],
-						"execution_count": 6
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('workspaceName'), '/sas_to_parquet_using_python')]",
 			"type": "Microsoft.Synapse/workspaces/notebooks",
 			"apiVersion": "2019-06-01-preview",
@@ -185,7 +113,7 @@
 						"spark.dynamicAllocation.enabled": "true",
 						"spark.dynamicAllocation.minExecutors": "1",
 						"spark.dynamicAllocation.maxExecutors": "4",
-						"spark.autotune.trackingId": "83bfc065-c973-44b0-841a-ae93e4ac19ac"
+						"spark.autotune.trackingId": "cde1687e-54ac-48fe-94f8-9c7149f4b922"
 					}
 				},
 				"metadata": {
@@ -210,10 +138,8 @@
 						"sparkVersion": "3.1",
 						"nodeCount": 10,
 						"cores": 4,
-						"memory": 28,
-						"automaticScaleJobs": true
-					},
-					"sessionKeepAliveTimeout": 30
+						"memory": 28
+					}
 				},
 				"cells": [
 					{
@@ -316,7 +242,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('workspaceName'), '/sas_to_parquet_using_spark_databricks')]",
+			"name": "[concat(parameters('workspaceName'), '/sas_to_parquet_using_spark')]",
 			"type": "Microsoft.Synapse/workspaces/notebooks",
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
@@ -461,6 +387,81 @@
 						],
 						"outputs": [],
 						"execution_count": null
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/test env')]",
+			"type": "Microsoft.Synapse/workspaces/notebooks",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"nbformat": 4,
+				"nbformat_minor": 2,
+				"bigDataPool": {
+					"referenceName": "sparkpool",
+					"type": "BigDataPoolReference"
+				},
+				"sessionProperties": {
+					"driverMemory": "28g",
+					"driverCores": 4,
+					"executorMemory": "28g",
+					"executorCores": 4,
+					"numExecutors": 1,
+					"conf": {
+						"spark.dynamicAllocation.enabled": "true",
+						"spark.dynamicAllocation.minExecutors": "1",
+						"spark.dynamicAllocation.maxExecutors": "4",
+						"spark.autotune.trackingId": "8aebc98d-eceb-4998-9851-79edce8e7669"
+					}
+				},
+				"metadata": {
+					"saveOutput": true,
+					"enableDebugMode": false,
+					"kernelspec": {
+						"name": "synapse_pyspark",
+						"display_name": "Synapse PySpark"
+					},
+					"language_info": {
+						"name": "python"
+					},
+					"a365ComputeOptions": {
+						"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/otpocdemo/providers/Microsoft.Synapse/workspaces/pocdemo-synapse/bigDataPools/sparkpool",
+						"name": "sparkpool",
+						"type": "Spark",
+						"endpoint": "https://pocdemo-synapse.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool",
+						"auth": {
+							"type": "AAD",
+							"authResource": "https://dev.azuresynapse.net"
+						},
+						"sparkVersion": "3.1",
+						"nodeCount": 10,
+						"cores": 4,
+						"memory": 28,
+						"automaticScaleJobs": true
+					},
+					"sessionKeepAliveTimeout": 30
+				},
+				"cells": [
+					{
+						"cell_type": "code",
+						"metadata": {},
+						"source": [
+							"# ***********************************Set Up ***********************************\r\n",
+							"# Import PySpark\r\n",
+							"import pyspark\r\n",
+							"from pyspark.sql import SparkSession\r\n",
+							"from pyspark.sql.types import StructType, StructField, StringType, IntegerType\r\n",
+							"import sas7bdat\r\n",
+							"    \r\n",
+							"if type(sqlContext) != pyspark.sql.context.HiveContext:\r\n",
+							"    print('reset the Spark SQL context')\r\n",
+							"df = spark.read.format(\"com.github.saurfang.sas.spark\").load(\"/mnt/nicoleblbstg/sample_dataset_contents.sas7bdat\", \r\n",
+							"                                                                 forceLowercaseNames=True, inferLong=True)"
+						],
+						"outputs": [],
+						"execution_count": 6
 					}
 				]
 			},
