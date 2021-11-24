@@ -1,5 +1,5 @@
 {
-	"name": "sas-to-parquet-using-spark",
+	"name": "test env",
 	"properties": {
 		"nbformat": 4,
 		"nbformat_minor": 2,
@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "1",
 				"spark.dynamicAllocation.maxExecutors": "4",
-				"spark.autotune.trackingId": "5f9acf8a-f569-4043-b844-ae44812f37f9"
+				"spark.autotune.trackingId": "9af92b1f-512c-4284-a0c3-7bd1f468b45a"
 			}
 		},
 		"metadata": {
