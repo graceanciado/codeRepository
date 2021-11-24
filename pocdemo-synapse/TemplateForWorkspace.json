@@ -113,7 +113,7 @@
 						"spark.dynamicAllocation.enabled": "true",
 						"spark.dynamicAllocation.minExecutors": "1",
 						"spark.dynamicAllocation.maxExecutors": "4",
-						"spark.autotune.trackingId": "8c7c001c-23ed-456e-8351-e7ec6a529658"
+						"spark.autotune.trackingId": "5f9acf8a-f569-4043-b844-ae44812f37f9"
 					}
 				},
 				"metadata": {
@@ -138,15 +138,12 @@
 						"sparkVersion": "3.1",
 						"nodeCount": 10,
 						"cores": 4,
-						"memory": 28,
-						"automaticScaleJobs": true
-					},
-					"sessionKeepAliveTimeout": 30
+						"memory": 28
+					}
 				},
 				"cells": [
 					{
 						"cell_type": "code",
-						"metadata": {},
 						"source": [
 							"# ***********************************Set Up ***********************************\r\n",
 							"# Import PySpark\r\n",
@@ -162,6 +159,141 @@
 						],
 						"outputs": [],
 						"execution_count": 6
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/sas_to_parquet_using_spark_databricks')]",
+			"type": "Microsoft.Synapse/workspaces/notebooks",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"description": "thsi is import from databricks",
+				"nbformat": 4,
+				"nbformat_minor": 2,
+				"sessionProperties": {
+					"driverMemory": "28g",
+					"driverCores": 4,
+					"executorMemory": "28g",
+					"executorCores": 4,
+					"numExecutors": 2,
+					"conf": {
+						"spark.dynamicAllocation.enabled": "false",
+						"spark.dynamicAllocation.minExecutors": "2",
+						"spark.dynamicAllocation.maxExecutors": "2",
+						"spark.autotune.trackingId": "450ca098-82d6-4df9-bc08-25f95a382586"
+					}
+				},
+				"metadata": {
+					"saveOutput": true,
+					"enableDebugMode": false,
+					"kernelspec": {
+						"name": "synapse_pyspark",
+						"display_name": "python"
+					},
+					"language_info": {
+						"name": "python"
+					},
+					"sessionKeepAliveTimeout": 30
+				},
+				"cells": [
+					{
+						"cell_type": "code",
+						"metadata": {
+							"application/vnd.databricks.v1+cell": {
+								"title": "",
+								"showTitle": false,
+								"nuid": "5b5753e2-7a66-4f60-983a-2242a01ec6d6"
+							}
+						},
+						"source": [
+							"\n",
+							"# *****************************************************************************\n",
+							"# Added to mount to the Azure Storage Account\n",
+							"\n",
+							"mount_name = '/mnt/nicoleblbstg'\n",
+							"\n",
+							"if not any(mount.mountPoint == mount_name for mount in dbutils.fs.mounts()):              \n",
+							"    dbutils.fs.mount(\n",
+							"        source = \"wasbs://nicoleblbstg@nicoleblbstg.blob.core.windows.net\",\n",
+							"        mount_point = mount_name,\n",
+							"        extra_configs = {\"fs.azure.account.key.nicoleblbstg.blob.core.windows.net\":\"IekjFA+sqW3MwykZV7B4S5/7dzbB600psa9QyWnfYZDMBCylvKQvXcdnR17S1Vo3wvpuUMsDOv1Dh009DMEjQw==\"}) \n",
+							"# *****************************************************************************\n",
+							"\n",
+							"# ***********************************Set Up ***********************************\n",
+							"#Install packages, if not installed for first run remove the comments on sas7bdat and/or pandas\n",
+							"#%pip install sas7bdat\n",
+							"#%pip install --upgrade pip\n",
+							"\n",
+							"#import required packages\n",
+							"#import os\n",
+							"#try:\n",
+							"#    import sas7bdat\n",
+							"#    import pandas\n",
+							"#    import fastparquet\n",
+							"#    import findspark\n",
+							"#    findspark.init()\n",
+							"#except ImportError:\n",
+							"#    print('try to install the packags first')\n",
+							" \n",
+							"#from sas7bdat import SAS7BDAT\n",
+							"    \n",
+							"# Import PySpark\n",
+							"import pyspark\n",
+							"from pyspark.sql import SparkSession\n",
+							"from pyspark.sql.types import StructType, StructField, StringType, IntegerType\n",
+							"import sas7bdat\n",
+							"\n",
+							"    \n",
+							"if type(sqlContext) != pyspark.sql.context.HiveContext:\n",
+							"    print('reset the Spark SQL context')\n",
+							"    \n",
+							"# *****************************************************************************\n",
+							"\n",
+							"\n",
+							"\n",
+							"#read and write required Metadata columns\n",
+							"    df = spark.read.format(\"com.github.saurfang.sas.spark\").load(\"/mnt/nicoleblbstg/sample_dataset_contents.sas7bdat\", \n",
+							"                                                                 forceLowercaseNames=True, inferLong=True)\n",
+							"    df.write.mode('overwrite').parquet('/dbfs/mnt/nicoleblbstg/sas-to-parquet-using-spark/sample_dataset_contents')\n",
+							"    display(df)\n",
+							"\n",
+							"def sas_to_parquet(filelist, source, destination):\n",
+							"    rows = 0\n",
+							"    for i, filename in enumerate(filelist):\n",
+							"     #Read sas7bdat into Spark Data frame\n",
+							"     spark_df = spark.read.format(\"com.github.saurfang.sas.spark\").load(source+filename+'.sas7bdat', \n",
+							"                                                                        forceLowercaseNames=True, inferLong=True)\n",
+							"     #Write to Parquet File\n",
+							"     spark_df.write.mode('overwrite').parquet(destination+filename)\n",
+							"###################### not needed for display purposes ######################\n",
+							"     data = spark.read.parquet(destination+filename)\n",
+							"     display(data)\n",
+							"     print(\"Schema: {}\".format(data.schema))\n",
+							"###################### not needed for display purposes ######################\n",
+							"sas_to_parquet(['sample_file_1','sample_file_3','sample_file_4','sample_file_2'], \n",
+							"               '/mnt/nicoleblbstg/', '/mnt/nicoleblbstg/sas-to-parquet-using-spark/')\n",
+							"#sas_to_parquet(['sample_file_1'], '/dbfs/mnt/nicoleblbstg/', '/mnt/nicoleblbstg/sas-to-parquet-using-spark/')    \n",
+							"        "
+						],
+						"outputs": [],
+						"execution_count": 0
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"application/vnd.databricks.v1+cell": {
+								"title": "",
+								"showTitle": false,
+								"nuid": "f8a2331d-8d83-4302-9fb3-6e6ca78901f4"
+							}
+						},
+						"source": [
+							""
+						],
+						"outputs": [],
+						"execution_count": 0
 					}
 				]
 			},
