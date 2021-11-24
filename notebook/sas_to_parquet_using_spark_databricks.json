@@ -18,7 +18,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "1",
 				"spark.dynamicAllocation.maxExecutors": "4",
-				"spark.autotune.trackingId": "e9f24d0f-4a3f-496f-a2b8-f813ae124faa"
+				"spark.autotune.trackingId": "444d016f-8f68-445b-9bcc-b1cde9d7ec5b"
 			}
 		},
 		"metadata": {
@@ -26,7 +26,7 @@
 			"enableDebugMode": false,
 			"kernelspec": {
 				"name": "synapse_pyspark",
-				"display_name": "python"
+				"display_name": "Synapse PySpark"
 			},
 			"language_info": {
 				"name": "python"
@@ -127,7 +127,7 @@
 					"#sas_to_parquet(['sample_file_1'], '/dbfs/mnt/nicoleblbstg/', '/mnt/nicoleblbstg/sas-to-parquet-using-spark/')    \n",
 					"        "
 				],
-				"execution_count": 0
+				"execution_count": 1
 			},
 			{
 				"cell_type": "code",
@@ -141,7 +141,7 @@
 				"source": [
 					""
 				],
-				"execution_count": 0
+				"execution_count": null
 			}
 		]
 	}
