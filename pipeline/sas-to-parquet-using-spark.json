@@ -21,11 +21,6 @@
 							"cran": {
 								"package": "sas7bdat"
 							}
-						},
-						{
-							"cran": {
-								"package": "pip"
-							}
 						}
 					]
 				},
