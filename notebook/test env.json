@@ -4,7 +4,7 @@
 		"nbformat": 4,
 		"nbformat_minor": 2,
 		"bigDataPool": {
-			"referenceName": "sparkpool",
+			"referenceName": "pocdemo",
 			"type": "BigDataPoolReference"
 		},
 		"sessionProperties": {
@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "1",
 				"spark.dynamicAllocation.maxExecutors": "4",
-				"spark.autotune.trackingId": "9af92b1f-512c-4284-a0c3-7bd1f468b45a"
+				"spark.autotune.trackingId": "fef88d4a-86d4-4109-b4db-d6e526f44c24"
 			}
 		},
 		"metadata": {
@@ -31,10 +31,10 @@
 				"name": "python"
 			},
 			"a365ComputeOptions": {
-				"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/otpocdemo/providers/Microsoft.Synapse/workspaces/pocdemo-synapse/bigDataPools/sparkpool",
-				"name": "sparkpool",
+				"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/otpocdemo/providers/Microsoft.Synapse/workspaces/pocdemo-synapse/bigDataPools/pocdemo",
+				"name": "pocdemo",
 				"type": "Spark",
-				"endpoint": "https://pocdemo-synapse.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool",
+				"endpoint": "https://pocdemo-synapse.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/pocdemo",
 				"auth": {
 					"type": "AAD",
 					"authResource": "https://dev.azuresynapse.net"
