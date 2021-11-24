@@ -113,7 +113,7 @@
 						"spark.dynamicAllocation.enabled": "true",
 						"spark.dynamicAllocation.minExecutors": "1",
 						"spark.dynamicAllocation.maxExecutors": "4",
-						"spark.autotune.trackingId": "64dbbf65-11c6-4f47-b0e7-a8b581082b50"
+						"spark.autotune.trackingId": "6c7fc166-84e9-43dc-9e9a-45800793a54b"
 					}
 				},
 				"metadata": {
@@ -205,7 +205,7 @@
 							"        "
 						],
 						"outputs": [],
-						"execution_count": 1
+						"execution_count": 0
 					},
 					{
 						"cell_type": "code",
@@ -220,7 +220,7 @@
 							""
 						],
 						"outputs": [],
-						"execution_count": null
+						"execution_count": 0
 					},
 					{
 						"cell_type": "code",
@@ -235,7 +235,7 @@
 							""
 						],
 						"outputs": [],
-						"execution_count": null
+						"execution_count": 0
 					}
 				]
 			},
@@ -263,7 +263,7 @@
 						"spark.dynamicAllocation.enabled": "true",
 						"spark.dynamicAllocation.minExecutors": "1",
 						"spark.dynamicAllocation.maxExecutors": "4",
-						"spark.autotune.trackingId": "c840d3db-a3af-4120-8bd0-930a78c9feac"
+						"spark.autotune.trackingId": "1107b21d-06a3-4ae1-ae0f-35824f6a3c6b"
 					}
 				},
 				"metadata": {
@@ -288,8 +288,10 @@
 						"sparkVersion": "3.1",
 						"nodeCount": 10,
 						"cores": 4,
-						"memory": 28
-					}
+						"memory": 28,
+						"automaticScaleJobs": true
+					},
+					"sessionKeepAliveTimeout": 30
 				},
 				"cells": [
 					{
@@ -413,7 +415,7 @@
 						"spark.dynamicAllocation.enabled": "true",
 						"spark.dynamicAllocation.minExecutors": "1",
 						"spark.dynamicAllocation.maxExecutors": "4",
-						"spark.autotune.trackingId": "a565b560-777a-4c44-86e8-4465bf1e9969"
+						"spark.autotune.trackingId": "18ea0ee3-8b3a-427a-b661-540814f7d763"
 					}
 				},
 				"metadata": {
@@ -438,15 +440,12 @@
 						"sparkVersion": "3.1",
 						"nodeCount": 10,
 						"cores": 4,
-						"memory": 28,
-						"automaticScaleJobs": true
-					},
-					"sessionKeepAliveTimeout": 30
+						"memory": 28
+					}
 				},
 				"cells": [
 					{
 						"cell_type": "code",
-						"metadata": {},
 						"source": [
 							"# Import PySpark\r\n",
 							"import pyspark\r\n",
@@ -464,7 +463,7 @@
 							"                                                                 forceLowercaseNames=True, inferLong=True)"
 						],
 						"outputs": [],
-						"execution_count": 4
+						"execution_count": 5
 					}
 				]
 			},
