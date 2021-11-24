@@ -90,14 +90,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"notebookPath": "/Users/t828427@spark.co.nz/sas_to_parquet_using_spark",
-							"libraries": [
-								{
-									"pypi": {
-										"package": ""
-									}
-								}
-							]
+							"notebookPath": "/Users/t828427@spark.co.nz/sas_to_parquet_using_spark"
 						},
 						"linkedServiceName": {
 							"referenceName": "AzureDatabricks_LinkedService",
