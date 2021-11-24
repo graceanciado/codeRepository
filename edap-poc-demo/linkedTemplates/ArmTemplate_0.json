@@ -90,11 +90,16 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"notebookPath": "/Users/t828427@spark.co.nz/sas_to_parquet_using_spark",
+							"notebookPath": "/Users/t829134@spark.co.nz/sas_to_parquet_using_spark",
 							"libraries": [
 								{
 									"cran": {
 										"package": "sas7bdat"
+									}
+								},
+								{
+									"cran": {
+										"package": "pip"
 									}
 								}
 							]
