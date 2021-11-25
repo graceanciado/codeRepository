@@ -246,7 +246,7 @@
 				"nbformat": 4,
 				"nbformat_minor": 2,
 				"bigDataPool": {
-					"referenceName": "pocdemo",
+					"referenceName": "pocdemo24",
 					"type": "BigDataPoolReference"
 				},
 				"sessionProperties": {
@@ -254,12 +254,12 @@
 					"driverCores": 4,
 					"executorMemory": "28g",
 					"executorCores": 4,
-					"numExecutors": 2,
+					"numExecutors": 1,
 					"conf": {
-						"spark.dynamicAllocation.enabled": "false",
-						"spark.dynamicAllocation.minExecutors": "2",
-						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "5f919cd9-742a-42c6-9738-2fa41ae69d5b"
+						"spark.dynamicAllocation.enabled": "true",
+						"spark.dynamicAllocation.minExecutors": "1",
+						"spark.dynamicAllocation.maxExecutors": "4",
+						"spark.autotune.trackingId": "d65d223b-e9c9-472e-80b1-f6f54604c0c3"
 					}
 				},
 				"metadata": {
@@ -273,19 +273,19 @@
 						"name": "python"
 					},
 					"a365ComputeOptions": {
-						"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/otpocdemo/providers/Microsoft.Synapse/workspaces/pocotdemo/bigDataPools/pocdemo",
-						"name": "pocdemo",
+						"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/otpocdemo/providers/Microsoft.Synapse/workspaces/pocotdemo/bigDataPools/pocdemo24",
+						"name": "pocdemo24",
 						"type": "Spark",
-						"endpoint": "https://pocotdemo.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/pocdemo",
+						"endpoint": "https://pocotdemo.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/pocdemo24",
 						"auth": {
 							"type": "AAD",
 							"authResource": "https://dev.azuresynapse.net"
 						},
-						"sparkVersion": "3.1",
+						"sparkVersion": "2.4",
 						"nodeCount": 10,
 						"cores": 4,
 						"memory": 28,
-						"automaticScaleJobs": false
+						"automaticScaleJobs": true
 					},
 					"sessionKeepAliveTimeout": 30
 				},
@@ -309,7 +309,7 @@
 							""
 						],
 						"outputs": [],
-						"execution_count": 12
+						"execution_count": 2
 					}
 				]
 			},
