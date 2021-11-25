@@ -1,5 +1,5 @@
 {
-	"name": "test env",
+	"name": "sas-to-parquet",
 	"properties": {
 		"nbformat": 4,
 		"nbformat_minor": 2,
@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "1",
 				"spark.dynamicAllocation.maxExecutors": "4",
-				"spark.autotune.trackingId": "9bb32846-d53d-427c-bbda-4193b3cb7f23"
+				"spark.autotune.trackingId": "00fdd768-65c3-414e-98b5-34080fd571e3"
 			}
 		},
 		"metadata": {
@@ -62,11 +62,31 @@
 					"\r\n",
 					"#read and write required Metadata columns\r\n",
 					"\r\n",
-					"df = spark.read.format(\"com.github.saurfang.sas.spark\").load(\"/sample_file_1.sas7bdat\", forceLowercaseNames=True, inferLong=True)\r\n",
-					"display(df)\r\n",
+					"#read and write required Metadata columns\r\n",
+					"    df = spark.read.format(\"com.github.saurfang.sas.spark\").load(\"/sample_file_1.sas7bdat\", forceLowercaseNames=True, inferLong=True)\r\n",
+					"    df.write.mode('overwrite').parquet('/sample_dataset_contents')\r\n",
+					"    display(df)\r\n",
+					"\r\n",
+					"def sas_to_parquet(filelist, source, destination):\r\n",
+					"    rows = 0\r\n",
+					"    for i, filename in enumerate(filelist):\r\n",
+					"        #Read sas7bdat into Spark Data frame\r\n",
+					"        spark_df = spark.read.format(\"com.github.saurfang.sas.spark\").load(source+filename+'.sas7bdat', \r\n",
+					"                                                                        forceLowercaseNames=True, inferLong=True)\r\n",
+					"        #Write to Parquet File\r\n",
+					"        spark_df.write.mode('overwrite').parquet(destination+filename)\r\n",
+					"\r\n",
+					"###################### not needed for display purposes ######################\r\n",
+					"        data = spark.read.parquet(destination+filename)\r\n",
+					"        display(data)\r\n",
+					"        print(\"Schema: {}\".format(data.schema))\r\n",
+					"\r\n",
+					"###################### not needed for display purposes ######################\r\n",
+					"sas_to_parquet(['sample_file_1','sample_file_3','sample_file_2'], \r\n",
+					"               '/', '/sas-to-parquet-using-spark/')\r\n",
 					""
 				],
-				"execution_count": 27
+				"execution_count": 34
 			}
 		]
 	}
