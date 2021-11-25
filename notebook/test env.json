@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "1",
 				"spark.dynamicAllocation.maxExecutors": "4",
-				"spark.autotune.trackingId": "daac0e30-7e86-4920-9dca-4a82bdb283e1"
+				"spark.autotune.trackingId": "703dcdea-e4d6-4b70-a961-93bbb941bc7a"
 			}
 		},
 		"metadata": {
@@ -51,8 +51,6 @@
 			{
 				"cell_type": "code",
 				"source": [
-					"\r\n",
-					"# Import PySpark\r\n",
 					"import pyspark\r\n",
 					"from pyspark.sql import SparkSession\r\n",
 					"from pyspark.sql.types import StructType, StructField, StringType, IntegerType\r\n",
@@ -63,10 +61,12 @@
 					"# *****************************************************************************\r\n",
 					"\r\n",
 					"#read and write required Metadata columns\r\n",
-					"df = spark.read.format(\"com.github.saurfang.sas.spark\").load(\"/sample_file_1.sas7bdat\", \r\n",
-					"                                                                 forceLowercaseNames=True, inferLong=True)"
+					"\r\n",
+					"df = spark.read.format(\"com.github.saurfang.sas.spark\").load(\"/sample_file_1.sas7bdat\", forceLowercaseNames=True, inferLong=True)\r\n",
+					"display(df)\r\n",
+					""
 				],
-				"execution_count": 22
+				"execution_count": 27
 			}
 		]
 	}
