@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "1",
 				"spark.dynamicAllocation.maxExecutors": "4",
-				"spark.autotune.trackingId": "f2e899c2-8c13-4064-bb59-1f41031a16be"
+				"spark.autotune.trackingId": "92c8e416-7c02-47e1-aecd-8b56d7991638"
 			}
 		},
 		"metadata": {
@@ -86,7 +86,7 @@
 					"               '/', '/sas-to-parquet-using-spark/')\r\n",
 					""
 				],
-				"execution_count": 1
+				"execution_count": 3
 			}
 		]
 	}
