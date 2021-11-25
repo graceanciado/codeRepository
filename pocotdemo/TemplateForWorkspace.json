@@ -314,7 +314,7 @@
 						"spark.dynamicAllocation.enabled": "true",
 						"spark.dynamicAllocation.minExecutors": "1",
 						"spark.dynamicAllocation.maxExecutors": "4",
-						"spark.autotune.trackingId": "984665f0-37de-4a9b-a43e-7d8449eac19d"
+						"spark.autotune.trackingId": "584880bd-f2f6-482b-bd14-1aed6b0a5cb3"
 					}
 				},
 				"metadata": {
@@ -366,8 +366,6 @@
 							"    \n",
 							"# *****************************************************************************\n",
 							"\n",
-							"\n",
-							"\n",
 							"#read and write required Metadata columns\n",
 							"    df = spark.read.format(\"com.github.saurfang.sas.spark\").load(\"/sample_file_1.sas7bdat\", forceLowercaseNames=True, inferLong=True)\n",
 							"    df.write.mode('overwrite').parquet('/sample_dataset_contents')\n",
@@ -386,13 +384,13 @@
 							"     display(data)\n",
 							"     print(\"Schema: {}\".format(data.schema))\n",
 							"###################### not needed for display purposes ######################\n",
-							"sas_to_parquet(['sample_file_1','sample_file_3','sample_file_4','sample_file_2'], \n",
-							"               '/mnt/nicoleblbstg/', '/mnt/nicoleblbstg/sas-to-parquet-using-spark/')\n",
+							"sas_to_parquet(['sample_file_1','sample_file_3','sample_file_2'], \n",
+							"               '/', '/sas-to-parquet-using-spark/')\n",
 							"#sas_to_parquet(['sample_file_1'], '/dbfs/mnt/nicoleblbstg/', '/mnt/nicoleblbstg/sas-to-parquet-using-spark/')    \n",
 							"        "
 						],
 						"outputs": [],
-						"execution_count": 1
+						"execution_count": 3
 					},
 					{
 						"cell_type": "code",
