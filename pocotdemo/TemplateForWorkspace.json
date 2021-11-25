@@ -151,7 +151,7 @@
 				"nbformat": 4,
 				"nbformat_minor": 2,
 				"bigDataPool": {
-					"referenceName": "pocdemo",
+					"referenceName": "pocdemo24",
 					"type": "BigDataPoolReference"
 				},
 				"sessionProperties": {
@@ -164,7 +164,7 @@
 						"spark.dynamicAllocation.enabled": "true",
 						"spark.dynamicAllocation.minExecutors": "1",
 						"spark.dynamicAllocation.maxExecutors": "4",
-						"spark.autotune.trackingId": "883acefa-44f7-4f2b-8b35-af6ae25856b1"
+						"spark.autotune.trackingId": "f4c74209-cb57-47c1-ae4e-47f61221bf83"
 					}
 				},
 				"metadata": {
@@ -178,23 +178,26 @@
 						"name": "python"
 					},
 					"a365ComputeOptions": {
-						"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/otpocdemo/providers/Microsoft.Synapse/workspaces/pocotdemo/bigDataPools/pocdemo",
-						"name": "pocdemo",
+						"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/otpocdemo/providers/Microsoft.Synapse/workspaces/pocotdemo/bigDataPools/pocdemo24",
+						"name": "pocdemo24",
 						"type": "Spark",
-						"endpoint": "https://pocotdemo.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/pocdemo",
+						"endpoint": "https://pocotdemo.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/pocdemo24",
 						"auth": {
 							"type": "AAD",
 							"authResource": "https://dev.azuresynapse.net"
 						},
-						"sparkVersion": "3.1",
+						"sparkVersion": "2.4",
 						"nodeCount": 10,
 						"cores": 4,
-						"memory": 28
-					}
+						"memory": 28,
+						"automaticScaleJobs": true
+					},
+					"sessionKeepAliveTimeout": 30
 				},
 				"cells": [
 					{
 						"cell_type": "code",
+						"metadata": {},
 						"source": [
 							"import pyspark\r\n",
 							"from pyspark.sql import SparkSession\r\n",
@@ -232,7 +235,7 @@
 							""
 						],
 						"outputs": [],
-						"execution_count": 8
+						"execution_count": 1
 					}
 				]
 			},
@@ -259,7 +262,7 @@
 						"spark.dynamicAllocation.enabled": "true",
 						"spark.dynamicAllocation.minExecutors": "1",
 						"spark.dynamicAllocation.maxExecutors": "4",
-						"spark.autotune.trackingId": "88854bb9-a280-4f46-ae31-9ab85dc86f28"
+						"spark.autotune.trackingId": "96420ce6-3c08-4c3f-96a1-28eac498cef9"
 					}
 				},
 				"metadata": {
@@ -284,15 +287,12 @@
 						"sparkVersion": "2.4",
 						"nodeCount": 10,
 						"cores": 4,
-						"memory": 28,
-						"automaticScaleJobs": true
-					},
-					"sessionKeepAliveTimeout": 30
+						"memory": 28
+					}
 				},
 				"cells": [
 					{
 						"cell_type": "code",
-						"metadata": {},
 						"source": [
 							"import pyspark\r\n",
 							"from pyspark.sql import SparkSession\r\n",
