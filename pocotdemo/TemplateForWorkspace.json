@@ -164,7 +164,7 @@
 						"spark.dynamicAllocation.enabled": "true",
 						"spark.dynamicAllocation.minExecutors": "1",
 						"spark.dynamicAllocation.maxExecutors": "4",
-						"spark.autotune.trackingId": "d7844748-8dd9-40f4-94f5-b2f3cb92648c"
+						"spark.autotune.trackingId": "883acefa-44f7-4f2b-8b35-af6ae25856b1"
 					}
 				},
 				"metadata": {
@@ -246,7 +246,7 @@
 				"nbformat": 4,
 				"nbformat_minor": 2,
 				"bigDataPool": {
-					"referenceName": "pocdemo2",
+					"referenceName": "pocdemo",
 					"type": "BigDataPoolReference"
 				},
 				"sessionProperties": {
@@ -254,12 +254,12 @@
 					"driverCores": 4,
 					"executorMemory": "28g",
 					"executorCores": 4,
-					"numExecutors": 1,
+					"numExecutors": 2,
 					"conf": {
-						"spark.dynamicAllocation.enabled": "true",
-						"spark.dynamicAllocation.minExecutors": "1",
-						"spark.dynamicAllocation.maxExecutors": "1",
-						"spark.autotune.trackingId": "bd9c41bc-8074-4703-85bb-5dcae71cb0c9"
+						"spark.dynamicAllocation.enabled": "false",
+						"spark.dynamicAllocation.minExecutors": "2",
+						"spark.dynamicAllocation.maxExecutors": "2",
+						"spark.autotune.trackingId": "5f919cd9-742a-42c6-9738-2fa41ae69d5b"
 					}
 				},
 				"metadata": {
@@ -273,10 +273,10 @@
 						"name": "python"
 					},
 					"a365ComputeOptions": {
-						"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/otpocdemo/providers/Microsoft.Synapse/workspaces/pocotdemo/bigDataPools/pocdemo2",
-						"name": "pocdemo2",
+						"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/otpocdemo/providers/Microsoft.Synapse/workspaces/pocotdemo/bigDataPools/pocdemo",
+						"name": "pocdemo",
 						"type": "Spark",
-						"endpoint": "https://pocotdemo.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/pocdemo2",
+						"endpoint": "https://pocotdemo.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/pocdemo",
 						"auth": {
 							"type": "AAD",
 							"authResource": "https://dev.azuresynapse.net"
@@ -285,7 +285,7 @@
 						"nodeCount": 10,
 						"cores": 4,
 						"memory": 28,
-						"automaticScaleJobs": true
+						"automaticScaleJobs": false
 					},
 					"sessionKeepAliveTimeout": 30
 				},
@@ -309,7 +309,7 @@
 							""
 						],
 						"outputs": [],
-						"execution_count": 6
+						"execution_count": 12
 					}
 				]
 			},
