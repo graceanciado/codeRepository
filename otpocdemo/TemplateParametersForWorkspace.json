@@ -8,6 +8,9 @@
 		"otpocdemo-WorkspaceDefaultSqlServer_connectionString": {
 			"value": ""
 		},
+		"otpocdemosas-WorkspaceDefaultSqlServer_connectionString": {
+			"value": ""
+		},
 		"pocdemo-synapse-WorkspaceDefaultSqlServer_connectionString": {
 			"value": ""
 		},
@@ -16,6 +19,9 @@
 		},
 		"otpocdemo-WorkspaceDefaultStorage_properties_typeProperties_url": {
 			"value": "https://pocdemogen2.dfs.core.windows.net"
+		},
+		"otpocdemosas-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://graceanciadodlsgen2.dfs.core.windows.net"
 		},
 		"pocdemo-synapse-WorkspaceDefaultStorage_properties_typeProperties_url": {
 			"value": "https://pochtmldemotoadls.dfs.core.windows.net"
