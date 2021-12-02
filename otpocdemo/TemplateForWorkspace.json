@@ -246,7 +246,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('workspaceName'), '/sas-to-parquet-1sample')]",
+			"name": "[concat(parameters('workspaceName'), '/sas-to-parquet-multiplefiles')]",
 			"type": "Microsoft.Synapse/workspaces/notebooks",
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
@@ -266,7 +266,7 @@
 						"spark.dynamicAllocation.enabled": "true",
 						"spark.dynamicAllocation.minExecutors": "1",
 						"spark.dynamicAllocation.maxExecutors": "4",
-						"spark.autotune.trackingId": "0afdf8e6-4ee0-4404-81ab-7c86105eb0c1"
+						"spark.autotune.trackingId": "e4a04f68-0101-4ceb-aa87-2791a7e1865c"
 					}
 				},
 				"metadata": {
@@ -300,6 +300,92 @@
 					{
 						"cell_type": "code",
 						"metadata": {},
+						"source": [
+							"import pyspark\r\n",
+							"from pyspark.sql import SparkSession\r\n",
+							"from pyspark.sql.types import StructType, StructField, StringType, IntegerType\r\n",
+							"\r\n",
+							"if type(sqlContext) != pyspark.sql.context.HiveContext:\r\n",
+							"    print('reset the Spark SQL context')\r\n",
+							"    \r\n",
+							"# *****************************************************************************\r\n",
+							"def sas_to_parquet(filelist, source, destination):\r\n",
+							"    rows = 0\r\n",
+							"    for i, filename in enumerate(filelist):\r\n",
+							"        #Read sas7bdat into Spark Data frame\r\n",
+							"        spark_df = spark.read.format(\"com.github.saurfang.sas.spark\").load(source+filename+'.sas7bdat', \r\n",
+							"                                                                        forceLowercaseNames=True, inferLong=True)\r\n",
+							"        #Write to Parquet File\r\n",
+							"        spark_df.write.mode('overwrite').parquet(destination+filename)\r\n",
+							"\r\n",
+							"###################### not needed for display purposes ######################\r\n",
+							"        data = spark.read.parquet(destination+filename)\r\n",
+							"        display(data)\r\n",
+							"        print(\"Schema: {}\".format(data.schema))\r\n",
+							"\r\n",
+							"###################### not needed for display purposes ######################\r\n",
+							"sas_to_parquet(['sample_file_1','sample_file_3','sample_file_2'], \r\n",
+							"               '/source/sas-client-samplefiles/', '/target/sas-to-parquet-using-spark/')"
+						],
+						"outputs": [],
+						"execution_count": 2
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/sas-to-parquet-singlefile')]",
+			"type": "Microsoft.Synapse/workspaces/notebooks",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"nbformat": 4,
+				"nbformat_minor": 2,
+				"bigDataPool": {
+					"referenceName": "sparkpool248v",
+					"type": "BigDataPoolReference"
+				},
+				"sessionProperties": {
+					"driverMemory": "56g",
+					"driverCores": 8,
+					"executorMemory": "56g",
+					"executorCores": 8,
+					"numExecutors": 1,
+					"conf": {
+						"spark.dynamicAllocation.enabled": "true",
+						"spark.dynamicAllocation.minExecutors": "1",
+						"spark.dynamicAllocation.maxExecutors": "4",
+						"spark.autotune.trackingId": "09ed056a-b92a-4d8d-ab67-fdae2f5a179a"
+					}
+				},
+				"metadata": {
+					"saveOutput": true,
+					"enableDebugMode": false,
+					"kernelspec": {
+						"name": "synapse_pyspark",
+						"display_name": "Synapse PySpark"
+					},
+					"language_info": {
+						"name": "python"
+					},
+					"a365ComputeOptions": {
+						"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/graceanciado/providers/Microsoft.Synapse/workspaces/otpocdemo/bigDataPools/sparkpool248v",
+						"name": "sparkpool248v",
+						"type": "Spark",
+						"endpoint": "https://otpocdemo.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool248v",
+						"auth": {
+							"type": "AAD",
+							"authResource": "https://dev.azuresynapse.net"
+						},
+						"sparkVersion": "2.4",
+						"nodeCount": 10,
+						"cores": 8,
+						"memory": 56
+					}
+				},
+				"cells": [
+					{
+						"cell_type": "code",
 						"source": [
 							"import pyspark\r\n",
 							"from pyspark.sql import SparkSession\r\n",
@@ -344,7 +430,7 @@
 						"spark.dynamicAllocation.enabled": "true",
 						"spark.dynamicAllocation.minExecutors": "1",
 						"spark.dynamicAllocation.maxExecutors": "4",
-						"spark.autotune.trackingId": "d0e9aec7-5879-4bff-af59-217c6eb0f13e"
+						"spark.autotune.trackingId": "de3825d2-2ab4-4ed9-a5b5-960e7a4dfc4b"
 					}
 				},
 				"metadata": {
@@ -369,15 +455,12 @@
 						"sparkVersion": "2.4",
 						"nodeCount": 10,
 						"cores": 8,
-						"memory": 56,
-						"automaticScaleJobs": true
-					},
-					"sessionKeepAliveTimeout": 30
+						"memory": 56
+					}
 				},
 				"cells": [
 					{
 						"cell_type": "code",
-						"metadata": {},
 						"source": [
 							"import pyspark\r\n",
 							"from pyspark.sql import SparkSession\r\n",
