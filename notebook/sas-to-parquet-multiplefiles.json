@@ -1,5 +1,5 @@
 {
-	"name": "sas-to-parquet",
+	"name": "sas-to-parquet-multiplefiles",
 	"properties": {
 		"nbformat": 4,
 		"nbformat_minor": 2,
@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "1",
 				"spark.dynamicAllocation.maxExecutors": "4",
-				"spark.autotune.trackingId": "de3825d2-2ab4-4ed9-a5b5-960e7a4dfc4b"
+				"spark.autotune.trackingId": "0c9ca743-015e-41e9-9317-4b6765ec0c5a"
 			}
 		},
 		"metadata": {
@@ -59,11 +59,6 @@
 					"    print('reset the Spark SQL context')\r\n",
 					"    \r\n",
 					"# *****************************************************************************\r\n",
-					"#read and write required Metadata columns\r\n",
-					"    df = spark.read.format(\"com.github.saurfang.sas.spark\").load(\"/source/sas-client-samplefiles/sample_file_1.sas7bdat\", forceLowercaseNames=True, inferLong=True)\r\n",
-					"    df.write.mode('overwrite').parquet('/target/sample_dataset_contents')\r\n",
-					"    display(df)\r\n",
-					"\r\n",
 					"def sas_to_parquet(filelist, source, destination):\r\n",
 					"    rows = 0\r\n",
 					"    for i, filename in enumerate(filelist):\r\n",
@@ -80,11 +75,9 @@
 					"\r\n",
 					"###################### not needed for display purposes ######################\r\n",
 					"sas_to_parquet(['sample_file_1','sample_file_3','sample_file_2'], \r\n",
-					"               '/', '/sas-to-parquet-using-spark/')\r\n",
-					"\r\n",
-					""
+					"               '/source/sas-client-samplefiles/', '/target/sas-to-parquet-using-spark/')"
 				],
-				"execution_count": 33
+				"execution_count": 2
 			}
 		]
 	}
