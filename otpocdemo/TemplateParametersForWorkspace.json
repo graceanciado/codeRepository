@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "otpocdemo"
+		},
+		"otpocdemo-WorkspaceDefaultSqlServer_connectionString": {
+			"value": ""
+		},
+		"pocdemo-synapse-WorkspaceDefaultSqlServer_connectionString": {
+			"value": ""
+		},
+		"pocotdemo-WorkspaceDefaultSqlServer_connectionString": {
+			"value": ""
+		},
+		"otpocdemo-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://pocdemogen2.dfs.core.windows.net"
+		},
+		"pocdemo-synapse-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://pochtmldemotoadls.dfs.core.windows.net"
+		},
+		"pocotdemo-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://pocdemogen2.dfs.core.windows.net"
+		}
+	}
+}
