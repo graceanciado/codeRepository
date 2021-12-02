@@ -4,20 +4,20 @@
 		"nbformat": 4,
 		"nbformat_minor": 2,
 		"bigDataPool": {
-			"referenceName": "sparkpool248v",
+			"referenceName": "sparkpool24",
 			"type": "BigDataPoolReference"
 		},
 		"sessionProperties": {
-			"driverMemory": "56g",
-			"driverCores": 8,
-			"executorMemory": "56g",
-			"executorCores": 8,
-			"numExecutors": 1,
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
 			"conf": {
-				"spark.dynamicAllocation.enabled": "true",
-				"spark.dynamicAllocation.minExecutors": "1",
-				"spark.dynamicAllocation.maxExecutors": "4",
-				"spark.autotune.trackingId": "aad22526-3135-4e5d-ad7d-344d70884bf2"
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "1ea4ba97-7b49-4fcf-b71a-dc6db4cede2a"
 			}
 		},
 		"metadata": {
@@ -31,19 +31,19 @@
 				"name": "python"
 			},
 			"a365ComputeOptions": {
-				"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/graceanciado/providers/Microsoft.Synapse/workspaces/otpocdemo/bigDataPools/sparkpool248v",
-				"name": "sparkpool248v",
+				"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/graceanciado/providers/Microsoft.Synapse/workspaces/otpocdemosas/bigDataPools/sparkpool24",
+				"name": "sparkpool24",
 				"type": "Spark",
-				"endpoint": "https://otpocdemo.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool248v",
+				"endpoint": "https://otpocdemosas.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool24",
 				"auth": {
 					"type": "AAD",
 					"authResource": "https://dev.azuresynapse.net"
 				},
 				"sparkVersion": "2.4",
 				"nodeCount": 10,
-				"cores": 8,
-				"memory": 56,
-				"automaticScaleJobs": true
+				"cores": 4,
+				"memory": 28,
+				"automaticScaleJobs": false
 			},
 			"sessionKeepAliveTimeout": 30
 		},
@@ -84,7 +84,7 @@
 					"\r\n",
 					""
 				],
-				"execution_count": 27
+				"execution_count": 4
 			}
 		]
 	}
