@@ -1,0 +1,66 @@
+{
+	"name": "test",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "sparkpool248v",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "56g",
+			"driverCores": 8,
+			"executorMemory": "56g",
+			"executorCores": 8,
+			"numExecutors": 1,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "true",
+				"spark.dynamicAllocation.minExecutors": "1",
+				"spark.dynamicAllocation.maxExecutors": "4",
+				"spark.autotune.trackingId": "aeda67ad-7ccc-4193-a40c-9d4da8245c7c"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/graceanciado/providers/Microsoft.Synapse/workspaces/otpocdemo/bigDataPools/sparkpool248v",
+				"name": "sparkpool248v",
+				"type": "Spark",
+				"endpoint": "https://otpocdemo.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool248v",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "2.4",
+				"nodeCount": 10,
+				"cores": 4,
+				"memory": 28,
+				"automaticScaleJobs": true
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"source": [
+					"import pyspark\r\n",
+					"from pyspark.sql import SparkSession\r\n",
+					"from pyspark.sql.types import StructType, StructField, StringType, IntegerType\r\n",
+					"\r\n",
+					"if type(sqlContext) != pyspark.sql.context.HiveContext:\r\n",
+					"    print('reset the Spark SQL context')\r\n",
+					"    "
+				],
+				"execution_count": 3
+			}
+		]
+	}
+}
