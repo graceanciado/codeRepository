@@ -4,20 +4,20 @@
 		"nbformat": 4,
 		"nbformat_minor": 2,
 		"bigDataPool": {
-			"referenceName": "pocdemo24",
+			"referenceName": "sparkpool248v",
 			"type": "BigDataPoolReference"
 		},
 		"sessionProperties": {
-			"driverMemory": "28g",
-			"driverCores": 4,
-			"executorMemory": "28g",
-			"executorCores": 4,
+			"driverMemory": "56g",
+			"driverCores": 8,
+			"executorMemory": "56g",
+			"executorCores": 8,
 			"numExecutors": 1,
 			"conf": {
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "1",
 				"spark.dynamicAllocation.maxExecutors": "4",
-				"spark.autotune.trackingId": "c100520e-451b-4193-962b-5098f8324eb9"
+				"spark.autotune.trackingId": "aad22526-3135-4e5d-ad7d-344d70884bf2"
 			}
 		},
 		"metadata": {
@@ -31,10 +31,10 @@
 				"name": "python"
 			},
 			"a365ComputeOptions": {
-				"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/otpocdemo/providers/Microsoft.Synapse/workspaces/pocotdemo/bigDataPools/pocdemo24",
-				"name": "pocdemo24",
+				"id": "/subscriptions/505b2bdc-ae47-42f6-8aec-7df3585952f9/resourceGroups/graceanciado/providers/Microsoft.Synapse/workspaces/otpocdemo/bigDataPools/sparkpool248v",
+				"name": "sparkpool248v",
 				"type": "Spark",
-				"endpoint": "https://pocotdemo.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/pocdemo24",
+				"endpoint": "https://otpocdemo.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool248v",
 				"auth": {
 					"type": "AAD",
 					"authResource": "https://dev.azuresynapse.net"
@@ -60,8 +60,8 @@
 					"    \r\n",
 					"# *****************************************************************************\r\n",
 					"#read and write required Metadata columns\r\n",
-					"    df = spark.read.format(\"com.github.saurfang.sas.spark\").load(\"abfss://sas-to-parquet@pocdemogen2.dfs.core.windows.net/sample_file_1.sas7bdat\", forceLowercaseNames=True, inferLong=True)\r\n",
-					"    df.write.mode('overwrite').parquet('/sample_dataset_contents')\r\n",
+					"    df = spark.read.format(\"com.github.saurfang.sas.spark\").load(\"abfss://sas-to-parquet@pocdemogen2.dfs.core.windows.net/source/sas-client-samplefiles/sample_file_1.sas7bdat\", forceLowercaseNames=True, inferLong=True)\r\n",
+					"    df.write.mode('overwrite').parquet('/target/sample_dataset_contents')\r\n",
 					"    display(df)\r\n",
 					"\r\n",
 					"def sas_to_parquet(filelist, source, destination):\r\n",
@@ -84,7 +84,7 @@
 					"\r\n",
 					""
 				],
-				"execution_count": 1
+				"execution_count": 27
 			}
 		]
 	}
