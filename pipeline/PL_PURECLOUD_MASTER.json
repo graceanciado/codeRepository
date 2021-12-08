@@ -1,0 +1,30 @@
+{
+	"name": "PL_PURECLOUD_MASTER",
+	"properties": {
+		"activities": [
+			{
+				"name": "ACT_ADB_NOTE_POC_PURECLOUD",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/pcp-main"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-12-08T01:02:20Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

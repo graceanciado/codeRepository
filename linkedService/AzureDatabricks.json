@@ -1,0 +1,19 @@
+{
+	"name": "AzureDatabricks",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-8952064063266797.17.azuredatabricks.net",
+			"newClusterNodeType": "Standard_DS3_v2",
+			"newClusterNumOfWorker": "1:3",
+			"newClusterSparkEnvVars": {
+				"PYSPARK_PYTHON": "/databricks/python3/bin/python3"
+			},
+			"newClusterVersion": "10.0.x-scala2.12",
+			"newClusterInitScripts": [],
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDY5NjEzRDkzLUVFQ0ItNDZDMy05NzNCLTA4RkNCMUUzQjBEN19hMzZiMzgyMC1hMjQ2LTQxNGItOTY3ZC1mYTMzZmI1OWE0NmYiDQp9"
+		}
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"name": "jig-purecloud-adf",
+	"location": "australiaeast",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "db2412c5-1371-4d5a-be7a-277998106d44",
+		"tenantId": "f6b3cec6-a862-4a40-9ab4-00d6e11e6f0f"
+	}
+}
